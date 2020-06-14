@@ -17,7 +17,7 @@ function Provider(props) {
       .then(res => {
         setState({
           track_list: res.data.message.body.track_list,
-          heading: "Hello heading"
+          heading: "Top 10 tracks"
         });
       })
       .catch(err => console.log(err));

@@ -10,19 +10,19 @@ function Lyrics(props) {
   const [track, setTrack] = useState({});
   const [lyrics, setLyrics] = useState({});
 
-  const getTrack = () => {
-    return axios.get(
-      `${CORS}${TRACK_URI}${props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
-    );
-  };
-
-  const getLyrics = () => {
-    return axios.get(
-      `${CORS}${LYRICS_URI}${props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
-    );
-  };
-
   useEffect(() => {
+    const getTrack = () => {
+      return axios.get(
+        `${CORS}${TRACK_URI}${props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
+      );
+    };
+
+    const getLyrics = () => {
+      return axios.get(
+        `${CORS}${LYRICS_URI}${props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
+      );
+    };
+
     (async () => {
       const lyricResponse = await getLyrics();
       const trackResponse = await getTrack();
@@ -30,7 +30,7 @@ function Lyrics(props) {
       setLyrics(lyricResponse.data.message.body.lyrics);
       setTrack(trackResponse.data.message.body.track);
     })();
-  }, []);
+  }, [props.match.params.id]);
 
   return (
     <>

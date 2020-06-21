@@ -1,14 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Consumer } from "../../context";
 import Spinner from "../layout/Spinner";
 import Track from "./Track";
 
 function Tracks() {
-  const { track_list, heading } = useContext(Consumer);
+  const {
+    state: { track_list, heading }
+  } = useContext(Consumer);
 
-  useEffect(() => {
-    console.log(track_list, heading);
-  });
   return (
     <>
       {track_list && track_list.length ? (

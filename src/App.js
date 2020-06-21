@@ -4,6 +4,7 @@ import Index from "./components/layout/Index";
 
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
+import Lyrics from "./components/Tracks/Lyrics";
 import Provider from "./context";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <div className="container">
             <Switch>
               <Route exact path="/" component={Index} />
+              <Route exact path="/lyrics/track/:id" component={Lyrics} />
             </Switch>
           </div>
         </React.Fragment>
